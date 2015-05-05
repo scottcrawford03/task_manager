@@ -15,6 +15,12 @@
 //= require_tree .
 
 $(document).ready(function() {
+  $("#text_box").keyup(function() {
+    $("div").hide();
+    var term = $(this).val();
+    $("li:contains('"+ term +"')").parents('div').show();
+  });
+
   $(".archive-task-list").click(function(e){
     e.preventDefault();
     var id = $(this).parent("li").attr("id");
@@ -29,8 +35,7 @@ $(document).ready(function() {
 
   $(".delete-task").click(function(e) {
     e.preventDefault();
-    var id = $(this).parent("div").attr("id");
-    deleteTask(id, this);
+    deleteTask(this);
   });
 
   $(".complete-task").click(function(e) {
@@ -64,7 +69,8 @@ function updateTask(button) {
   $(button).parents('div').remove()
 };
 
-function deleteTask(id, button) {
+function deleteTask(button) {
+  var id = $(button).parents('div').attr('id');
   $.ajax({
     method: "DELETE",
     url: "/delete_task/" + id,
@@ -79,7 +85,7 @@ function deleteTask(id, button) {
 }
 
 function deletedTask(button) {
-  $(button).parent("div").remove()
+  $(button).parents("div").remove()
 };
 
 function deleteTaskList(id, button) {
@@ -103,14 +109,14 @@ function deletedFromTaskList(button){
 function archiveTaskList(id, button) {
   $.ajax({
     method: "PUT",
-    url: "/archive_task_list/" + id,
-    data: {id: id},
-    success: function() {
-      removedFromTaskList(button);
-    },
-    error: function() {
-             alert("TaskList could not be archived at this time");
-           }
+  url: "/archive_task_list/" + id,
+  data: {id: id},
+  success: function() {
+    removedFromTaskList(button);
+  },
+  error: function() {
+           alert("TaskList could not be archived at this time");
+         }
   });
 }
 
