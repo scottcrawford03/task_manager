@@ -15,6 +15,10 @@
 //= require_tree .
 
 $(document).ready(function() {
+  $('.title-sort').hide();
+  $('.description-sort').hide();
+  $('.date-sort').hide();
+  
   $("#text_box").keyup(function() {
     $("div").hide();
     var term = $(this).val();
@@ -49,6 +53,38 @@ $(document).ready(function() {
     var id = $(this).parents("div").attr("id");
     completeTask(id, this);
   });
+
+  $('.all-tasks-button').click(function(e){
+    e.preventDefault();
+    $('.all-tasks').show();
+    $('.title-sort').hide();
+    $('.description-sort').hide();
+    $('.date-sort').hide();
+  });
+
+  $('.title-sort-button').click(function(e){
+    e.preventDefault();
+    $('.all-tasks').hide();
+    $('.title-sort').show();
+    $('.description-sort').hide();
+    $('.date-sort').hide();
+  });
+
+  $('.description-sort-button').click(function(e){
+    e.preventDefault();
+    $('.all-tasks').hide();
+    $('.title-sort').hide();
+    $('.description-sort').show();
+    $('.date-sort').hide();
+  });
+
+  $('.date-sort-button').click(function(e){
+    e.preventDefault();
+    $('.all-tasks').hide();
+    $('.title-sort').hide();
+    $('.description-sort').hide();
+    $('.date-sort').show();
+  });
 });
 
 function completeTask(id, button) {
@@ -62,7 +98,7 @@ function completeTask(id, button) {
     error: function() {
              alert("Task could not be completed at this time");
            }
-  }); 
+  });
 };
 
 function updateTask(button) {
@@ -81,7 +117,7 @@ function deleteTask(button) {
     error: function() {
              alert("Task could not be deleted at this time");
            }
-  }); 
+  });
 }
 
 function deletedTask(button) {
@@ -99,7 +135,7 @@ function deleteTaskList(id, button) {
     error: function() {
              alert("TaskList could not be deleted at this time");
            }
-  }); 
+  });
 }
 
 function deletedFromTaskList(button){
@@ -123,4 +159,3 @@ function archiveTaskList(id, button) {
 function removedFromTaskList(button) {
   $(button).parent("li").remove()
 };
-

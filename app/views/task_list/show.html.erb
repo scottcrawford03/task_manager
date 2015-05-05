@@ -2,24 +2,38 @@
 <%= link_to "Completed Tasks", complete_task_index_path(task_list: @task_list.id) %>
 <%= button_to "Create Task", new_task_list_task_path(@task_list.id), method: :get %>
 
+<button class="all-tasks-button">
+  Show All
+</button>
+
+<button class="title-sort-button">
+  Sort By Title
+</button>
+
+<button class="description-sort-button">
+  Sort By Description
+</button>
+
+<button class="date-sort-button">
+  Sort By Date
+</button>
+
 <form>
   <input type="text" id="text_box" />
 </form>
 
-<% @tasks.each do |task| %>
-  <div class="task" id=<%="#{task.id}"%>>
-    <h3><%= "Task Number #{task.id}"%></h3>
-    <ul>
-    <li>Title: <%= task.title %></li>
-    <li>Description: <%= task.description %></li>
-    <li>Due Date: <%= task.due_date %></li><br>
-    <li class="status">Status: <%= task.status%></li><br>
-    <%= button_to "Edit Task", edit_task_list_task_path(@task_list.id, task), method: :get %>
-    <button class="delete-task">
-      Delete Task
-    </button>
-    <button class="complete-task">
-      Complete Task
-    </button>
-  </div>
-<% end %>
+<div class="all-tasks">
+  <%= render partial: '/partials/tasks', locals: {tasks: @tasks} %>
+</div>
+
+<div class="title-sort">
+  <%= render partial: '/partials/task_by_title', locals: {tasks: @tasks} %>
+</div>
+
+<div class="description-sort">
+  <%= render partial: '/partials/task_by_description', locals: {tasks: @tasks} %>
+</div>
+
+<div class="date-sort">
+  <%= render partial: '/partials/task_by_date', locals: {tasks: @tasks} %>
+</div>

@@ -1,0 +1,17 @@
+<% @tasks.sort_by {|task| task.description}.reverse.each do |task| %>
+  <div class="task" id=<%="#{task.id}"%>>
+    <h3><%= "Task Number #{task.id}"%></h3>
+    <ul>
+    <li>Title: <%= task.title %></li>
+    <li>Description: <%= task.description %></li>
+    <li>Due Date: <%= task.due_date %></li><br>
+    <li class="status">Status: <%= task.status%></li><br>
+    <%= button_to "Edit Task", edit_task_list_task_path(@task_list.id, task), method: :get %>
+    <button class="delete-task">
+      Delete Task
+    </button>
+    <button class="complete-task">
+      Complete Task
+    </button>
+  </div>
+<% end %>
