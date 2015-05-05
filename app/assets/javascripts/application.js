@@ -20,7 +20,31 @@ $(document).ready(function() {
     var id = $(this).parent("li").attr("id");
     archiveTaskList(id, this);
   });
+
+  $(".delete-task-list").click(function(e){
+    e.preventDefault;
+    var id = $(this).parent("li").attr("id");
+    deleteTaskList(id, this);
+  });
 });
+
+function deleteTaskList(id, button) {
+  $.ajax({
+    method: "DELETE",
+    url: "/archive_task_list/" + id,
+    data: {id: id},
+    success: function() {
+      deletedFromTaskList(button);
+    },
+    error: function() {
+             alert("TaskList could not be deleted at this time");
+           }
+  }); 
+}
+
+function deletedFromTaskList(button){
+  $(button).parent("li").remove()
+}
 
 function archiveTaskList(id, button) {
   $.ajax({

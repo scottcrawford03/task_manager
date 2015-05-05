@@ -5,4 +5,5 @@
   <p>Title: <%= task.title %></p>
   <p>Description: <%= task.description %></p>
   <p>Due Date: <%= task.due_date %></p><br>
+  <%= button_to "Edit Task", edit_task_list_task_path(@task_list.id, task), method: :get %>
 <% end %>

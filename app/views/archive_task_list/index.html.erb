@@ -1,0 +1,11 @@
+<h1>Archived TaskLists</h1>
+<% @task_lists.each do |task_list| %>
+  <ul>
+    <li class="task-list", id=<%= task_list.id%>><%= link_to task_list.title, task_list_path(task_list) %><br>
+    <button class="delete-task-list">
+      Delete TaskList
+    </button>
+    <%= button_to "Edit TaskList", edit_task_list_path(task_list), method: :get %>
+    </li>
+  </ul>
+<% end %>

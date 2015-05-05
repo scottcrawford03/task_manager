@@ -1,0 +1,7 @@
+<h1>Update Information for Task: <%= @task.title %></h1>
+<%= form_for @task, url: task_list_task_path(@task_list, @task) do |f| %>
+  <%= f.text_field :title, placeholder: "#{@task.title}" %>
+  <%= f.text_field :description, placeholder: "#{@task.description}" %>
+  <%= f.date_field :due_date, placeholder: "#{@task.due_date}" %>
+  <%= f.submit "Update Task" %>
+<% end %>
