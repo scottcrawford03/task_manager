@@ -23,13 +23,13 @@ $(document).ready(function() {
 
   $(".archive-task-list").click(function(e){
     e.preventDefault();
-    var id = $(this).parent("li").attr("id");
+    var id = $(this).parents("li").attr("id");
     archiveTaskList(id, this);
   });
 
   $(".delete-task-list").click(function(e){
     e.preventDefault;
-    var id = $(this).parent("li").attr("id");
+    var id = $(this).parents("li").attr("id");
     deleteTaskList(id, this);
   });
 
@@ -40,13 +40,13 @@ $(document).ready(function() {
 
   $(".complete-task").click(function(e) {
     e.preventDefault();
-    var id = $(this).parent("div").attr("id");
+    var id = $(this).parents("div").attr("id");
     completeTask(id, this);
   });
 
   $(".incomplete-task").click(function(e) {
     e.preventDefault();
-    var id = $(this).parent("div").attr("id");
+    var id = $(this).parents("div").attr("id");
     completeTask(id, this);
   });
 });
