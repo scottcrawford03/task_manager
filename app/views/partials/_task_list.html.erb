@@ -1,0 +1,4 @@
+<%= form_for :task_list, url: task_list_index_path do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit "Create TaskList", placeholder: "Title" %>
+<% end %>

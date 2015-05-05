@@ -6,6 +6,16 @@ class TaskListController < ApplicationController
   def new
   end
 
+  def edit
+    @task_list = TaskList.find(params[:id])
+  end
+
+  def update
+    task_list = TaskList.find(params[:id])
+    task_list.update(title: params[:task_list][:title])
+    redirect_to root_path
+  end
+
   def create
     TaskList.create(task_list_params)
     redirect_to root_path
