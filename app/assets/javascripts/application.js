@@ -56,7 +56,7 @@ function completeTask(id, button) {
 };
 
 function updateTask(button) {
-  $(button).parents('div').html().replace('incomplete', 'complete')
+  $(button).parents('div').remove()
 };
 
 function deleteTask(id, button) {

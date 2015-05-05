@@ -1,6 +1,7 @@
 class TaskListController < ApplicationController
   def show
     @task_list = TaskList.find(params[:id])
+    @tasks = @task_list.tasks.where(status: 'incomplete')
   end
 
   def new
@@ -12,7 +13,8 @@ class TaskListController < ApplicationController
 
   def update
     task_list = TaskList.find(params[:id])
-    task_list.update(title: params[:task_list][:title])
+    binding.pry
+    task_list.update(title: params[:title])
     redirect_to root_path
   end
 
