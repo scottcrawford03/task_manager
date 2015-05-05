@@ -1,4 +1,5 @@
-<h1>Completed Tasks </h1>
+<h1>Completed Tasks for <%= @task_list.title %> </h1>
+<%= link_to "Incomplete Tasks", task_list_path(@task_list) %>
 <% @tasks.each do |task| %>
   <div class="task" id=<%="#{task.id}"%>>
     <h3><%= "Task Number #{task.id}"%></h3>
@@ -6,5 +7,8 @@
     <p>Description: <%= task.description %></p>
     <p>Due Date: <%= task.due_date %></p><br>
     <p class="status">Status: <%= task.status%></p><br>
+    <button class="incomplete-task">
+      Mark Incomplete
+    </button>
   </div>
 <% end %>

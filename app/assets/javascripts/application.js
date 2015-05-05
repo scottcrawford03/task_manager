@@ -38,6 +38,12 @@ $(document).ready(function() {
     var id = $(this).parent("div").attr("id");
     completeTask(id, this);
   });
+
+  $(".incomplete-task").click(function(e) {
+    e.preventDefault();
+    var id = $(this).parent("div").attr("id");
+    completeTask(id, this);
+  });
 });
 
 function completeTask(id, button) {
@@ -46,7 +52,6 @@ function completeTask(id, button) {
     url: "/complete_task/" + id,
     data: {id: id},
     success: function() {
-      alert("Task is Complete");
       updateTask(button);
     },
     error: function() {
