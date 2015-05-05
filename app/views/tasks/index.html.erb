@@ -8,7 +8,7 @@
 <div class="task-lists">
   <% @task_lists.each do |task_list| %>
     <ul>
-      <li class="task-list", id=<%= task_list.id%>><%= link_to task_list.title, task_list_path(task_list) %>
+      <li class="task-list", id=<%= task_list.id%>><%= link_to task_list.title, task_list_path(task_list) %><br>
       <button class="archive-task-list">
         Archive TaskList
       </button>

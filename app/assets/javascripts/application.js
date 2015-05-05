@@ -26,7 +26,56 @@ $(document).ready(function() {
     var id = $(this).parent("li").attr("id");
     deleteTaskList(id, this);
   });
+
+  $(".delete-task").click(function(e) {
+    e.preventDefault();
+    var id = $(this).parent("div").attr("id");
+    deleteTask(id, this);
+  });
+
+  $(".complete-task").click(function(e) {
+    e.preventDefault();
+    var id = $(this).parent("div").attr("id");
+    completeTask(id, this);
+  });
 });
+
+function completeTask(id, button) {
+  $.ajax({
+    method: "PUT",
+    url: "/complete_task/" + id,
+    data: {id: id},
+    success: function() {
+      alert("Task is Complete");
+      updateTask(button);
+    },
+    error: function() {
+             alert("Task could not be completed at this time");
+           }
+  }); 
+};
+
+function updateTask(button) {
+  $(button).parents('div').html().replace('incomplete', 'complete')
+};
+
+function deleteTask(id, button) {
+  $.ajax({
+    method: "DELETE",
+    url: "/delete_task/" + id,
+    data: {id: id},
+    success: function() {
+      deletedTask(button);
+    },
+    error: function() {
+             alert("Task could not be deleted at this time");
+           }
+  }); 
+}
+
+function deletedTask(button) {
+  $(button).parent("div").remove()
+};
 
 function deleteTaskList(id, button) {
   $.ajax({
