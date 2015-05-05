@@ -12,5 +12,31 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  $(".archive-task-list").click(function(e){
+    e.preventDefault();
+    var id = $(this).parent("li").attr("id");
+    archiveTaskList(id, this);
+  });
+});
+
+function archiveTaskList(id, button) {
+  $.ajax({
+    method: "PUT",
+    url: "/archive_task_list/" + id,
+    data: {id: id},
+    success: function() {
+      removedFromTaskList(button);
+    },
+    error: function() {
+             alert("TaskList could not be archived at this time");
+           }
+  });
+}
+
+function removedFromTaskList(button) {
+  $(button).parent("li").remove()
+};
+

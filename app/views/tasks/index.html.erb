@@ -1,5 +1,15 @@
 <h1>TaskLists</h1>
-<%= link_to "Create New TaskList", new_task_list_path %><br>
-<% @task_lists.each do |task_list| %>
-  <p><%= link_to task_list.title, task_list_path(task_list) %></p>
-<% end %>
+<div class="create-new-task">
+  <%= button_to "Create New TaskList", new_task_list_path, method: :get %><br>
+</div>
+<div class="task-lists">
+  <% @task_lists.each do |task_list| %>
+    <ul>
+      <li class="task-list", id=<%= task_list.id%>><%= link_to task_list.title, task_list_path(task_list) %>
+    <button class="archive-task-list">
+      Archive TaskList
+    </button>
+    </li>
+  </ul>
+  <% end %>
+</div>
