@@ -1,4 +1,4 @@
-<% @tasks.sort_by {|task| task.title}.reverse.each do |task| %>
+<% @tasks.sort_by {|task| task.title.downcase}.each do |task| %>
   <div class="task" id=<%="#{task.id}"%>>
     <h3><%= "Task Number #{task.id}"%></h3>
     <ul>
