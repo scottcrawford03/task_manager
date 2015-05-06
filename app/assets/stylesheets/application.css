@@ -13,3 +13,57 @@
  *= require_tree .
  *= require_self
  */
+.sort-buttons {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: 2px solid;
+  padding-top: 5px;
+}
+
+.title-sort-button {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.description-sort-button {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.date-sort-button {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.all-tasks-button {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.filter-box {
+  border-bottom: 2px solid;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.completed-tasks {
+  padding-left: 20px;
+}
+
+.create-task {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.sorted-section {
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+}

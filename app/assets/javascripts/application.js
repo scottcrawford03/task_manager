@@ -18,11 +18,14 @@ $(document).ready(function() {
   $('.title-sort').hide();
   $('.description-sort').hide();
   $('.date-sort').hide();
-  
+
   $("#text_box").keyup(function() {
-    $("div").hide();
-    var term = $(this).val();
-    $("li:contains('"+ term +"')").parents('div').show();
+    $('.task').hide().filter(function() {
+      var itemText = $(this).text().toLowerCase();
+      var searchText = $("#text_box").val().toLowerCase();
+      var filterMatch = itemText.indexOf(searchText) != -1;
+      return filterMatch;
+    }).show();
   });
 
   $(".archive-task-list").click(function(e){
@@ -102,6 +105,7 @@ function completeTask(id, button) {
 };
 
 function updateTask(button) {
+  debugger;
   $(button).parents('div').remove()
 };
 
