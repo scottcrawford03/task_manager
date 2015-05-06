@@ -3,5 +3,6 @@
   <%= f.text_field :title, placeholder: "#{@task.title}" %>
   <%= f.text_field :description, placeholder: "#{@task.description}" %>
   <%= f.date_field :due_date, placeholder: "#{@task.due_date}" %>
+  <%= f.check_box :delete_attachment %>
   <%= f.submit "Update Task" %>
 <% end %>

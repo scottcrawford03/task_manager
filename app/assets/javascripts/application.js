@@ -105,8 +105,7 @@ function completeTask(id, button) {
 };
 
 function updateTask(button) {
-  debugger;
-  $(button).parents('div').remove()
+  $(button).closest('div').remove()
 };
 
 function deleteTask(button) {
@@ -125,7 +124,7 @@ function deleteTask(button) {
 }
 
 function deletedTask(button) {
-  $(button).parents("div").remove()
+  $(button).closest("div").remove()
 };
 
 function deleteTaskList(id, button) {

@@ -13,7 +13,7 @@ class TaskListController < ApplicationController
 
   def update
     task_list = TaskList.find(params[:id])
-    task_list.update(title: params[:title])
+    task_list.update(title: params[:task_list][:title])
     redirect_to root_path
   end
 

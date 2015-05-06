@@ -22,12 +22,13 @@ class TasksController < ApplicationController
   def update
     task = Task.find(params[:id])
     task.update(task_params)
+    task.delete_attachment if (params[:task][:delete_attachment].to_i > 0)
     redirect_to task_list_path(params[:task_list_id])
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :due_date, :status)
+    params.require(:task).permit(:title, :description, :due_date,:attachment)
   end
 end

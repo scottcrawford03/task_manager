@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505150629) do
+ActiveRecord::Schema.define(version: 20150506015207) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,12 @@ ActiveRecord::Schema.define(version: 20150505150629) do
     t.integer  "task_list_id"
     t.string   "status"
     t.date     "due_date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   add_index "tasks", ["task_list_id"], name: "index_tasks_on_task_list_id", using: :btree
