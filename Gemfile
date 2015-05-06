@@ -12,7 +12,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   gem 'paperclip'
-  gem 'aws-s3'
   gem 'capybara'
   gem 'pry'
   gem 'launchy'

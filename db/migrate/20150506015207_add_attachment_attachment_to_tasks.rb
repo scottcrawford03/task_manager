@@ -1,4 +1,4 @@
-class AddAttachmentFileToTasks < ActiveRecord::Migration
+class AddAttachmentAttachmentToTasks < ActiveRecord::Migration
   def self.up
     change_table :tasks do |t|
       t.attachment :attachment
