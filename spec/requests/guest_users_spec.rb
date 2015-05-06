@@ -27,7 +27,7 @@ RSpec.describe "GuestUsers", type: :request do
   end
 
   describe "Creating a new task on a task list" do
-    before do
+    it "can create a new task" do
       visit root_path
       click_link_or_button "Create New TaskList"
       fill_in "task_list[title]", with: "Chores"
@@ -39,20 +39,26 @@ RSpec.describe "GuestUsers", type: :request do
       fill_in "task[description]", with: "The grass won't cut itself"
       fill_in "task[due_date]", with: Date.today
       click_link_or_button "Create Task"
-    end
-
-    it "can create a new task" do
       expect(page).to have_content("Mow")
       expect(page).to have_content("The grass won't cut itself")
       expect(page).to have_content(Date.today)
     end
 
     it "can hide a task" do
-      click_link_or_button "Complete Task"
-      visit root_path
-      click_link_or_button "Chores"
+      task_list = TaskList.create(title: "Saturday")
+      task = Task.create(title: "Poo Patrol", 
+                         description: "Get the Poo", 
+                         due_date: Date.today,
+                         status: 'incomplete')
+      task_list.tasks << task
+      visit task_list_path(task_list)
+      expect(page).to have_content("Poo Patrol")
 
-      expect(page).not_to have_content("Mow")
+
+      within('.all-tasks') do
+        click_link_or_button "Complete Task"
+      end 
+      expect(current_path).to eq(task_list_path(task_list))
     end
   end
 end

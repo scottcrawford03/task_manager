@@ -13,7 +13,6 @@ class TaskListController < ApplicationController
 
   def update
     task_list = TaskList.find(params[:id])
-    binding.pry
     task_list.update(title: params[:title])
     redirect_to root_path
   end

@@ -5,7 +5,6 @@ RSpec.describe Task, type: :model do
     before do
       @task = Task.new(title: "Mow", 
                       description: "Do it",
-                      status: "Incomplete",
                       due_date: Date.today)
     end
     
@@ -18,7 +17,9 @@ RSpec.describe Task, type: :model do
     end
 
     it "has a status" do
-      expect(@task.status).to eq("Incomplete")
+      expect(@task.status).not_to eq("incomplete")
+      @task.save
+      expect(@task.status).to eq('incomplete')
     end
 
     it "has a due date" do

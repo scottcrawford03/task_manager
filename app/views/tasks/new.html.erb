@@ -4,6 +4,5 @@
   Description: <%= f.text_field :description %><br>
   Due Date: <%= f.date_field :due_date %><br>
   <%= f.hidden_field :task_list, value: @task_list.id %>
-  <%= f.hidden_field :status, value: 'incomplete' %>
   <%= f.submit "Create Task" %>
 <% end %>
