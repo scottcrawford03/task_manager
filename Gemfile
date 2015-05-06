@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rails12factor'
 gem 'rmagick'
 gem 'paperclip'
 gem 'aws-sdk'
