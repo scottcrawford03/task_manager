@@ -12,3 +12,4 @@
 !/log/.keep
 /tmp
 /coverage
+/config/s3.yml
